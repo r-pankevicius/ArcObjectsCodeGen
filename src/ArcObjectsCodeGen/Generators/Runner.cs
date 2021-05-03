@@ -195,11 +195,12 @@ namespace ArcObjectsCodeGen.Generators
 				inputFileName: null, inputContent: featureClassTemplate, ref outputFileName, out string outputContent);
 			if (!success)
 			{
-				// Troubleshoot errors in debugger:
-				// inspect generator errors, find a path to temporary file GeneratedTextTransformation.cs,
-				// copy and add to the project under Temp folder to see compiler errors.
-				Logger.Error("Failed to generate code. See comments in code how to troubleshoot this.");
+				Logger.Error("Failed to generate code.");
 				ShowErrors(generator);
+				string generatedTextTransformationFileName = Path.GetFileName(generator.Errors[0].FileName);
+				string x = Path.Combine(m_Arguments.OutputFolder, generatedTextTransformationFileName);
+				Logger.Log($"Copying generated text transformation to {x}, please inspect this file to find errors.");
+				File.Copy(generator.Errors[0].FileName, x, overwrite: true);
 				return;
 			}
 
