@@ -1,11 +1,12 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ArcObjectsCodeGen")]
-[assembly: AssemblyDescription("ArcObjects code generator, see https://github.com/r-pankevicius/ArcObjectsCodeGen")]
+[assembly: AssemblyTitle("ArcObjectsCodeGen.Runtime")]
+[assembly: AssemblyDescription("Runtime support for ArcObjects code generator and unit tests, see https://github.com/r-pankevicius/ArcObjectsCodeGen")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Lazy Cats Studio")]
 [assembly: AssemblyProduct("ArcObjectsCodeGen")]
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b21bea80-086f-47f3-b4d1-1e8739ec35ce")]
+[assembly: Guid("310a93fe-19e3-4aa1-8ce5-c104d6ef8f81")]
 
 // Version information for an assembly consists of the following four values:
 //

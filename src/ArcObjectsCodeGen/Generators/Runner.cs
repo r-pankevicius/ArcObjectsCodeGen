@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using ArcObjectsCodeGen.AoGenerators.Templates;
+using ArcObjectsCodeGen.Generators.Templates;
+using ArcObjectsCodeGen.Runtime;
 using EnsureThat;
 using ESRI.ArcGIS.DataSourcesGDB;
 using ESRI.ArcGIS.Geodatabase;
 using Microsoft.VisualStudio.TextTemplating;
 using Mono.TextTemplating;
 
-namespace ArcObjectsCodeGen.AoGenerators
+namespace ArcObjectsCodeGen.Generators
 {
 	/// <summary>
 	/// Takes program input arguments and generates code for ArcObjects
 	/// </summary>
-	internal class AoRunner : IDisposable
+	internal class Runner : IDisposable
 	{
 		const string GenerateFeatureClassTask = "AO.FeatureClass";
 		const string GenerateFeatureDOSamplesTask = "AO.Feature";
@@ -23,7 +24,7 @@ namespace ArcObjectsCodeGen.AoGenerators
 		private readonly Arguments m_Arguments;
 		private readonly Releaser m_Releaser;
 
-		public AoRunner(Arguments arguments)
+		public Runner(Arguments arguments)
 		{
 			m_Arguments = EnsureArg.IsNotNull(arguments, nameof(arguments));
 			m_Releaser = new();

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ArcObjectsCodeGen.Runtime;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 
-namespace ArcObjectsCodeGen.AoGenerators.Templates
+namespace ArcObjectsCodeGen.Generators.Templates
 {
 	public class RowWrapper
 	{
@@ -108,7 +109,7 @@ namespace ArcObjectsCodeGen.AoGenerators.Templates
 			sb.
 				Append(m_TableOrFCClassName).
 				Append(".DeserializeViaIPersistStream<IPolyline>(\"").
-				Append(AoHelpers.SerializeViaIPersistStream(polyline, typeof(PolylineClass).GUID)).
+				Append(AoSerializationHelpers.SerializeViaIPersistStream(polyline, typeof(PolylineClass).GUID)).
 				Append("\")");
 			return true;
 		}
@@ -121,7 +122,7 @@ namespace ArcObjectsCodeGen.AoGenerators.Templates
 			sb.
 				Append(m_TableOrFCClassName).
 				Append(".DeserializeViaIPersistStream<IPolygon>(\"").
-				Append(AoHelpers.SerializeViaIPersistStream(polygon, typeof(PolygonClass).GUID)).
+				Append(AoSerializationHelpers.SerializeViaIPersistStream(polygon, typeof(PolygonClass).GUID)).
 				Append("\")");
 			return true;
 		}

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace ArcObjectsCodeGen
+namespace ArcObjectsCodeGen.Runtime
 {
 	/// <summary>
 	/// Manages lifetime of multiple COM objects and IDisposables.
 	/// </summary>
-	internal class Releaser : IDisposable
+	public class Releaser : IDisposable
 	{
 		private readonly List<object> m_ManagedObjects = new();
 

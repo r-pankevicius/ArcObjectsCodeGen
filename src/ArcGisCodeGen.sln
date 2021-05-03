@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcObjectsCodeGen", "ArcObjectsCodeGen\ArcObjectsCodeGen.csproj", "{B21BEA80-086F-47F3-B4D1-1E8739EC35CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcObjectsCodeGen.Runtime", "ArcObjectsCodeGen.Runtime\ArcObjectsCodeGen.Runtime.csproj", "{310A93FE-19E3-4AA1-8CE5-C104D6EF8F81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcObjectsCodeGen.Tests", "ArcObjectsCodeGen.Tests\ArcObjectsCodeGen.Tests.csproj", "{45AB417C-E2B3-4ACF-B924-7A39108E349A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B21BEA80-086F-47F3-B4D1-1E8739EC35CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B21BEA80-086F-47F3-B4D1-1E8739EC35CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B21BEA80-086F-47F3-B4D1-1E8739EC35CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{310A93FE-19E3-4AA1-8CE5-C104D6EF8F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{310A93FE-19E3-4AA1-8CE5-C104D6EF8F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{310A93FE-19E3-4AA1-8CE5-C104D6EF8F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{310A93FE-19E3-4AA1-8CE5-C104D6EF8F81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45AB417C-E2B3-4ACF-B924-7A39108E349A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45AB417C-E2B3-4ACF-B924-7A39108E349A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45AB417C-E2B3-4ACF-B924-7A39108E349A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45AB417C-E2B3-4ACF-B924-7A39108E349A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 
-namespace ArcObjectsCodeGen.AoGenerators.Templates
+namespace ArcObjectsCodeGen.Generators.Templates
 {
 	/// <summary>
 	/// A parameter context for FeatureDO.tt template.
@@ -24,7 +24,7 @@ namespace ArcObjectsCodeGen.AoGenerators.Templates
 			m_Dataset = (IDataset)m_Table;
 		}
 
-		public string Namespace => $"{nameof(AoRunner)}.GeneratedCode";
+		public string Namespace => $"{nameof(Runner)}.GeneratedCode";
 
 		/// <summary>
 		/// Name of C# class.

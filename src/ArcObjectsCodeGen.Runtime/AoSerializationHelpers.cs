@@ -1,9 +1,9 @@
 ﻿using System;
 using ESRI.ArcGIS.esriSystem;
 
-namespace ArcObjectsCodeGen.AoGenerators
+namespace ArcObjectsCodeGen.Runtime
 {
-	internal static class AoHelpers
+	public static class AoSerializationHelpers
 	{
 		public static string SerializeViaIPersistStream(object objectToSerialize, Guid coClassID)
 		{
@@ -24,6 +24,28 @@ namespace ArcObjectsCodeGen.AoGenerators
 			// Pack into coclass_GUID|serialized_sr_as_base64 string ('|' separator is not used in base 64, see https://base64.guru/learn/base64-characters)
 			string serializedString = string.Concat(coClassID.ToString(), "|", Convert.ToBase64String(serializedBytes));
 			return serializedString;
+		}
+
+		public static IAoInterface DeserializeViaIPersistStream<IAoInterface>(string serializedString)
+		{
+			// Divide serialized string into coclass Guid and serialized spatial reference bytes
+			string[] parts = serializedString.Split('|');
+			if (parts.Length != 2)
+				throw new ArgumentException($"Bad format: {nameof(serializedString)}");
+
+			var coClassID = new Guid(parts[0]);
+			var itf = (IAoInterface)Activator.CreateInstance(Type.GetTypeFromCLSID(coClassID));
+			var srPresistStream = (IPersistStream)itf;
+
+			byte[] srBytes = Convert.FromBase64String(parts[1]);
+
+			IMemoryBlobStream memoryStream = new MemoryBlobStreamClass();
+			var memstreamVariant = (IMemoryBlobStreamVariant)memoryStream;
+			memstreamVariant.ImportFromVariant(srBytes);
+
+			srPresistStream.Load(memoryStream);
+
+			return itf;
 		}
 	}
 }

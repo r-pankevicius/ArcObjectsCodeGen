@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ArcObjectsCodeGen.Runtime;
 using EnsureThat;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 
-namespace ArcObjectsCodeGen.AoGenerators.Templates
+namespace ArcObjectsCodeGen.Generators.Templates
 {
 	/// <summary>
 	/// A parameter context for FeatureClass.tt template.
@@ -30,7 +31,7 @@ namespace ArcObjectsCodeGen.AoGenerators.Templates
 			// field.Type != esriFieldType.esriFieldTypeOID) // to create table/fc, there is no need for Object ID
 		}
 
-		public string Namespace => $"{nameof(AoRunner)}.GeneratedCode";
+		public string Namespace => $"{nameof(Runner)}.GeneratedCode";
 
 		/// <summary>
 		/// Name of C# class for table/feature class helpers.
@@ -109,7 +110,7 @@ namespace ArcObjectsCodeGen.AoGenerators.Templates
 				var srPresistStream = (ISRPersistStream)spatialReference;
 				srPresistStream.GetClassID(out Guid coClassID);
 
-				return AoHelpers.SerializeViaIPersistStream(spatialReference, coClassID);
+				return AoSerializationHelpers.SerializeViaIPersistStream(spatialReference, coClassID);
 			}
 		}
 

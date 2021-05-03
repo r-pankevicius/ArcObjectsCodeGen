@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 
-namespace ArcObjectsCodeGen.AoGenerators.Templates
+namespace ArcObjectsCodeGen.Generators.Templates
 {
 	public class FieldDefinition
 	{

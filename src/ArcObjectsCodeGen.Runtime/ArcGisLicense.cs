@@ -4,9 +4,9 @@ using System;
 using System.Linq;
 using System.Threading;
 
-namespace ArcObjectsCodeGen.AoGenerators
+namespace ArcObjectsCodeGen.Runtime
 {
-	internal class ArcGisLicense : IDisposable
+	public class ArcGisLicense : IDisposable
 	{
 		private ArcGisLicense(bool gotLicense)
 		{

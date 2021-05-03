@@ -15,6 +15,7 @@ using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
 using System.Diagnostics.CodeAnalysis;
+using ArcObjectsCodeGen.Runtime;
 
 <#
 // TODOs: Create ITable if needed.
@@ -37,19 +38,8 @@ namespace <#= context.Namespace #>
         private static ISpatialReference s_OriginalSpatialReference;
 
         /// <summary>The original spatial reference of this class when generating source code.</summary>
-        public static ISpatialReference OriginalSpatialReference
-        {
-            get
-            {
-                if (s_OriginalSpatialReference is null)
-                {
-                  s_OriginalSpatialReference = DeserializeViaIPersistStream<ISpatialReference>(s_OriginalSpatialReferenceSerialized);
-                  s_OriginalSpatialReferenceSerialized = null; // no longer needed, let GC eat it
-                }
-
-                return s_OriginalSpatialReference;
-            }
-        }
+        public static ISpatialReference OriginalSpatialReference =>
+          AoSerializationHelpers.DeserializeViaIPersistStream<ISpatialReference>(s_OriginalSpatialReferenceSerialized);
 
         /// <summary>UID of feature extension class or null (EXTCLSID)</summary>
         public static readonly UID EXTCLSID = <#= context.EXTCLSID_Construct #>;
@@ -81,28 +71,6 @@ namespace <#= context.Namespace #>
           var CLSID = <#= context.CLSID_Construct #>;
           var featureClass = fws.CreateFeatureClass(Name, fields, CLSID, extensionCLSID, esriFeatureType.<#= context.FeatureTypeString #>, "<#= context.ShapeFieldName #>", ConfigKeyword: "");
           return featureClass;
-        }
-
-        public static IAoInterface DeserializeViaIPersistStream<IAoInterface>(string serializedString)
-        {
-          // Divide serialized string into coclass Guid and serialized spatial reference bytes
-          string[] parts = serializedString.Split('|');
-          if (parts.Length != 2)
-            throw new ArgumentException($"Bad format: {nameof(serializedString)}");
-
-          var coClassID = new Guid(parts[0]);
-          var itf = (IAoInterface)Activator.CreateInstance(Type.GetTypeFromCLSID(coClassID));
-          var srPresistStream = (IPersistStream)itf;
-
-          byte[] srBytes = Convert.FromBase64String(parts[1]);
-
-          IMemoryBlobStream memoryStream = new MemoryBlobStreamClass();
-          var memstreamVariant = (IMemoryBlobStreamVariant)memoryStream;
-          memstreamVariant.ImportFromVariant(srBytes);
-
-          srPresistStream.Load(memoryStream);
-
-          return itf;
         }
 
       #region Implementation

@@ -1,5 +1,5 @@
 ﻿using System;
-using ArcObjectsCodeGen.AoGenerators;
+using ArcObjectsCodeGen.Generators;
 
 namespace ArcObjectsCodeGen
 {
@@ -20,7 +20,7 @@ namespace ArcObjectsCodeGen
 					return 1;
 				}
 
-				using var aoRunner = new AoRunner(arguments);
+				using var aoRunner = new Runner(arguments);
 				aoRunner.Run();
 				return 0;
 			}

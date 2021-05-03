@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using ArcObjectsCodeGen.AoGenerators;
+using ArcObjectsCodeGen.Generators;
 
 namespace ArcObjectsCodeGen
 {
@@ -35,7 +35,7 @@ namespace ArcObjectsCodeGen
 			if (args.Length < 3)
 				return null;
 
-			var tasks = AoRunner.GetAvailableTasks().ToArray();
+			var tasks = Runner.GetAvailableTasks().ToArray();
 			if (tasks.Contains(args[0]))
 			{
 				var result = new Arguments

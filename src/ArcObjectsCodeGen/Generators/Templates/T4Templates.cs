@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace ArcObjectsCodeGen.AoGenerators.Templates
+namespace ArcObjectsCodeGen.Generators.Templates
 {
 	internal static class T4Templates
 	{
