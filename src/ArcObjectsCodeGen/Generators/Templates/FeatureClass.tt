@@ -135,7 +135,7 @@ namespace <#= context.Namespace #>
     /// Can be used over IRow/IRowBuffer.
     /// </summary>
     [SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Generated code")]
-    public partial class <#= context.DataObjectClassName #>RowReaderWriter
+    public partial class <#= context.DataObjectClassName #>RowReaderWriter : IRowReaderWriter<<#= context.DataObjectClassName #>>
     {
         private bool m_GettersInitialized;
         private bool m_SettersInitialized;
@@ -154,31 +154,35 @@ namespace <#= context.Namespace #>
         private FieldSetter<<#= fieldDef.CSharpType #>> m_Set<#= fieldDef.Name #>;
       <# } #>
 
-      /// <summary>
-      /// Creates an instance of <#= context.DataObjectClassName #> class and reads all available fields from <paramref name="rowBuffer" /> to it.
-      /// </summary>
       public <#= context.DataObjectClassName #> ReadFromRow(IRowBuffer rowBuffer)
       {
-			  if (rowBuffer is null)
-				  throw new ArgumentNullException(nameof(rowBuffer));
+          if (rowBuffer is null)
+            throw new ArgumentNullException(nameof(rowBuffer));
 
-			  var result = new <#= context.DataObjectClassName #>();
-			  GetFields(rowBuffer, result);
-			  return result;
+          var result = new <#= context.DataObjectClassName #>();
+          GetFields(rowBuffer, result);
+          return result;
       }
 
-		  /// <summary>
-		  /// Writes field values from <paramref name="dataObject"/> to <paramref name="rowBuffer" />.
-		  /// </summary>
-		  public void WriteToRow(IRowBuffer rowBuffer, <#= context.DataObjectClassName #> dataObject)
-		  {
-			  if (rowBuffer is null)
-				  throw new ArgumentNullException(nameof(rowBuffer));
-			  if (dataObject is null)
-				  throw new ArgumentNullException(nameof(dataObject));
+      public void WriteToRow(IRowBuffer rowBuffer, <#= context.DataObjectClassName #> dataObject)
+      {
+          if (rowBuffer is null)
+            throw new ArgumentNullException(nameof(rowBuffer));
+          if (dataObject is null)
+            throw new ArgumentNullException(nameof(dataObject));
 
-			  SetFields(rowBuffer, dataObject);
-		  }
+          SetFields(rowBuffer, dataObject);
+      }
+
+      public void SetObjectIDAfterInsert(object objectID, <#= context.DataObjectClassName #> dataObject)
+      {
+         if (dataObject is null)
+           throw new ArgumentNullException(nameof(dataObject));
+
+         // TODO: support for HasOID.
+         dataObject.ObjectID = (int)objectID;
+      }
+
       <# // TODO: virtual OnBeforeInsert, OnAfterInsert ... #>
 
 		  #region Implementation

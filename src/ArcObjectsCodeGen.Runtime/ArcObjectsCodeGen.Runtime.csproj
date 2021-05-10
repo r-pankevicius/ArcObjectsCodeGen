@@ -62,11 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AoSerializationHelpers.cs" />
+    <Compile Include="AOCodeGenRuntime.cs" />
     <Compile Include="ArcGisLicense.cs" />
-    <Compile Include="FieldGetter.cs" />
-    <Compile Include="FieldSetter.cs" />
-    <Compile Include="Releaser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
