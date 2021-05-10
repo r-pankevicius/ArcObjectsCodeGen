@@ -32,10 +32,8 @@ namespace <#= context.Namespace #>
         public const string Name = "<#= context.TableName #>";
 
         /// <summary>Original spatial reference of spatial class serialized base-64 encoded.</summary>
-        private static string s_OriginalSpatialReferenceSerialized =
+        private static readonly string s_OriginalSpatialReferenceSerialized =
           "<#= context.SerializedSpatialReference #>";
-
-        private static ISpatialReference s_OriginalSpatialReference;
 
         /// <summary>The original spatial reference of this class when generating source code.</summary>
         public static ISpatialReference OriginalSpatialReference =>
