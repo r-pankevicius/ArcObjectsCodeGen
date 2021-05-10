@@ -45,21 +45,34 @@ namespace ArcObjectsCodeGen
 					NameOfTableOrFC = args[2]
 				};
 
-				if (args.Length >= 4)
+				// --query SqlQuery
 				{
-					result.OutputFolder = args[3];
+					int queryArgIndex = Array.IndexOf(args, "--query");
+					if (queryArgIndex >= 0)
+					{
+						if (args.Length < queryArgIndex + 2)
+						{
+							Logger.Error("Pass query after --query.");
+							return null;
+						}
+
+						result.Query = args[queryArgIndex + 1];
+					}
 				}
 
-				int queryIndex = Array.IndexOf(args, "--query");
-				if (queryIndex >= 0)
+				// --output-folder OutputFolder
 				{
-					if (args.Length < queryIndex + 2)
+					int outputFolderArgIndex = Array.IndexOf(args, "--output-folder");
+					if (outputFolderArgIndex >= 0)
 					{
-						Logger.Error("Pass query after --query.");
-						return null;
-					}
+						if (args.Length < outputFolderArgIndex + 2)
+						{
+							Logger.Error("Pass output folder after --output-folder.");
+							return null;
+						}
 
-					result.Query = args[queryIndex + 1];
+						result.OutputFolder = args[outputFolderArgIndex + 1];
+					}
 				}
 
 				return result;
