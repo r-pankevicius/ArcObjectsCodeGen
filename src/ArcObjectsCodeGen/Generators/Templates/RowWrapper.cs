@@ -10,9 +10,9 @@ namespace ArcObjectsCodeGen.Generators.Templates
 {
 	public class RowWrapper
 	{
-		private IRow m_Row;
-		private FieldDefinition[] m_Fields;
-		private string m_TableOrFCClassName;
+		private readonly IRow m_Row;
+		private readonly FieldDefinition[] m_Fields;
+		private readonly string m_TableOrFCClassName;
 
 		public RowWrapper(IRow row, string tableOrFCClassName)
 		{
@@ -107,8 +107,7 @@ namespace ArcObjectsCodeGen.Generators.Templates
 		{
 			// Simplify work using binary serialization
 			sb.
-				Append(m_TableOrFCClassName).
-				Append(".DeserializeViaIPersistStream<IPolyline>(\"").
+				Append("AoSerializationHelpers.DeserializeViaIPersistStream<IPolyline>(\"").
 				Append(AoSerializationHelpers.SerializeViaIPersistStream(polyline, typeof(PolylineClass).GUID)).
 				Append("\")");
 			return true;
@@ -116,12 +115,9 @@ namespace ArcObjectsCodeGen.Generators.Templates
 
 		private bool BuildPolygonGeometryInitializier(StringBuilder sb, IPolygon polygon)
 		{
-			var navaras = (IZAware)polygon;
-
 			// Simplify work using binary serialization
 			sb.
-				Append(m_TableOrFCClassName).
-				Append(".DeserializeViaIPersistStream<IPolygon>(\"").
+				Append("AoSerializationHelpers.DeserializeViaIPersistStream<IPolygon>(\"").
 				Append(AoSerializationHelpers.SerializeViaIPersistStream(polygon, typeof(PolygonClass).GUID)).
 				Append("\")");
 			return true;

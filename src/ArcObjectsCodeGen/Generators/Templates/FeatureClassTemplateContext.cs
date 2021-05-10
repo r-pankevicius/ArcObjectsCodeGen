@@ -14,11 +14,11 @@ namespace ArcObjectsCodeGen.Generators.Templates
 	/// </summary>
 	public class FeatureClassTemplateContext
 	{
-		IClass m_Class;
-		IDataset m_Dataset;
-		ITable m_Table;
-		IFeatureClass m_FeatureClass;
-		private FieldDefinition[] m_Fields;
+		private readonly IClass m_Class;
+		private readonly IDataset m_Dataset;
+		private readonly ITable m_Table;
+		private readonly IFeatureClass m_FeatureClass;
+		private readonly FieldDefinition[] m_Fields;
 
 		public FeatureClassTemplateContext(IClass tableOrFc)
 		{

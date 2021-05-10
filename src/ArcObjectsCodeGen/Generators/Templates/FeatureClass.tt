@@ -11,11 +11,11 @@
 //
 #>
 using System;
+using System.Diagnostics.CodeAnalysis;
+using ArcObjectsCodeGen.Runtime;
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Geometry;
-using System.Diagnostics.CodeAnalysis;
-using ArcObjectsCodeGen.Runtime;
 
 <#
 // TODOs: Create ITable if needed.
