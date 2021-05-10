@@ -1,4 +1,4 @@
-@set solution=%~dp0%..\src\ArcGisCodeGen.sln
+@set solution=%~dp0%..\ArcGisCodeGen.sln
 
 @REM Find MSBuild, see https://github.com/microsoft/vswhere/wiki/Find-MSBuild
 

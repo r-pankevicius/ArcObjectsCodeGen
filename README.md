@@ -17,7 +17,7 @@ Generates feature samples.
 
 ## Notes
 
-Just started, many TODO-s.
+Just started, many TODO-s (most wanted: -namespace param).
 
 Aquire ArcGIS license when running the test, release afterwards. You can use [this class](./src/ArcObjectsCodeGen/AoGenerators/ArcGisLicense.cs).
 
