@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="AoSerializationHelpers.cs" />
     <Compile Include="ArcGisLicense.cs" />
+    <Compile Include="FieldGetter.cs" />
+    <Compile Include="FieldSetter.cs" />
     <Compile Include="Releaser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
