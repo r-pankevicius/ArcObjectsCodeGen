@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace ArcObjectsCodeGen.Runtime
@@ -24,7 +25,8 @@ namespace ArcObjectsCodeGen.Runtime
 
 		public void Dispose()
 		{
-			foreach (object obj in m_ManagedObjects)
+			// Release objects in reverse order than they were created
+			foreach (object obj in m_ManagedObjects.Reverse<object>())
 			{
 				if (obj is IDisposable disposable)
 					disposable.Dispose();
