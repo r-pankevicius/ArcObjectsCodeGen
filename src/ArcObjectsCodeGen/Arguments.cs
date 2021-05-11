@@ -5,7 +5,7 @@ using ArcObjectsCodeGen.Generators;
 namespace ArcObjectsCodeGen
 {
 	/// <summary>
-	/// Parsed program arguments
+	/// Parsed program arguments + parser.
 	/// </summary>
 	internal class Arguments
 	{
