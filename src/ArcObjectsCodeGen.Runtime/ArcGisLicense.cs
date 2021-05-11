@@ -59,7 +59,17 @@ namespace ArcObjectsCodeGen.Runtime
 						productCode = ProductCode.Server;
 					}
 
-					RuntimeManager.BindLicense(productCode);
+					try
+					{
+						RuntimeManager.BindLicense(productCode);
+					}
+					catch (Exception ex)
+					{
+						System.Diagnostics.Debug.Print("Failed to bind license for {0} product.", productCode);
+						System.Diagnostics.Debug.Print("{0}", ex);
+						return;
+					}
+
 					IAoInitialize aoInitialize = new AoInitializeClass();
 					esriLicenseStatus esriLicenseStatus = aoInitialize.Initialize((productCode == ProductCode.Server) ? esriLicenseProductCode.esriLicenseProductCodeArcServer : esriLicenseProductCode.esriLicenseProductCodeStandard);
 					gotLicense = (esriLicenseStatus == esriLicenseStatus.esriLicenseCheckedOut || esriLicenseStatus == esriLicenseStatus.esriLicenseAlreadyInitialized);
@@ -71,7 +81,7 @@ namespace ArcObjectsCodeGen.Runtime
 			return new ArcGisLicense(gotLicense);
 		}
 
-		public static void ReleaseLicense()
+		private static void ReleaseLicense()
 		{
 			IAoInitialize AoInitialize = new AoInitializeClass();
 			AoInitialize.Shutdown();
