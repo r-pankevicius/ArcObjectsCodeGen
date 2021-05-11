@@ -57,7 +57,7 @@ namespace ArcObjectsCodeGen.Generators
 			IClass @class = OpenTableOrFeatureClass();
 			if (@class is not null)
 			{
-				string template = T4Templates.FeatureClass;
+				string template = FeatureClassTemplateContext.GetT4Template();
 				var context = new FeatureClassTemplateContext(@class);
 				Generate(template, context, $"{context.ClassName}.cs");
 			}
@@ -96,7 +96,7 @@ namespace ArcObjectsCodeGen.Generators
 				return;
 			}
 
-			string template = T4Templates.FeatureDO;
+			string template = FeatureDOTemplateContext.GetT4Template();
 			var context = new FeatureDOTemplateContext(table, rows);
 			Generate(template, context, $"{context.ClassName}.cs");
 		}

@@ -66,11 +66,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmbeddedResourceReader.cs" />
     <Compile Include="Generators\Templates\FeatureClassTemplateContext.cs" />
     <Compile Include="Generators\Templates\FeatureDOTemplateContext.cs" />
     <Compile Include="Generators\Templates\FieldDefinition.cs" />
     <Compile Include="Generators\Templates\RowWrapper.cs" />
-    <Compile Include="Generators\Templates\T4Templates.cs" />
     <Compile Include="Arguments.cs" />
     <Compile Include="CSharpSyntaxHelpers.cs" />
     <Compile Include="Logger.cs" />
@@ -103,6 +103,9 @@
       <Project>{310a93fe-19e3-4aa1-8ce5-c104d6ef8f81}</Project>
       <Name>ArcObjectsCodeGen.Runtime</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Usage.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

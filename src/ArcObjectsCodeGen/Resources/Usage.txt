@@ -1,0 +1,11 @@
+﻿ArcObjectsCodeGen command syntax:
+  Command ConnectionFile.sde NameOfTableOrFeatureClass [--query "<SQL query>"] [--output-folder folder]
+
+Available commands:
+  AO.FeatureClass    - Create feature class definition file
+  AO.Feature         - Create feature samples
+
+Options:
+  --output-folder    - Folder to write generated class files. Default is current folder.
+  --query            - SQL query for feature samples.
+                       Example: --query "OBJECTID=5"

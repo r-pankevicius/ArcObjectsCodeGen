@@ -114,6 +114,9 @@ namespace ArcObjectsCodeGen.Generators.Templates
 			}
 		}
 
+		public static string GetT4Template() =>
+			EmbeddedResourceReader.GetUtf8Text(typeof(FeatureClassTemplateContext), "FeatureClass.tt");
+
 		#region Implementation
 
 		private static string ToCtorExpression(UID uid)

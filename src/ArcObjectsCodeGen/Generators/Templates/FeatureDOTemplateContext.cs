@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using EnsureThat;
-using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.Geometry;
 
 namespace ArcObjectsCodeGen.Generators.Templates
 {
@@ -13,9 +11,9 @@ namespace ArcObjectsCodeGen.Generators.Templates
 	/// </summary>
 	public class FeatureDOTemplateContext
 	{
-		IEnumerable<IRow> m_Rows;
-		ITable m_Table;
-		IDataset m_Dataset;
+		readonly IEnumerable<IRow> m_Rows;
+		readonly ITable m_Table;
+		readonly IDataset m_Dataset;
 
 		public FeatureDOTemplateContext(ITable table, IEnumerable<IRow> rows)
 		{
@@ -65,5 +63,8 @@ namespace ArcObjectsCodeGen.Generators.Templates
 				return m_Rows.Select(row => new RowWrapper(row, fcTemplateContext.ClassName));
 			}
 		}
+
+		public static string GetT4Template() =>
+			EmbeddedResourceReader.GetUtf8Text(typeof(FeatureDOTemplateContext), "FeatureDO.tt");
 	}
 }

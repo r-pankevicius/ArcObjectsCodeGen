@@ -24,7 +24,10 @@ namespace ArcObjectsCodeGen
 
 		public static void PrintUsage()
 		{
-			Logger.Error("Bad arguments. Look at source code and resubmit.");
+			Logger.Error("Bad command line arguments.\n");
+			string usageText = EmbeddedResourceReader.GetUtf8Text(
+				typeof(Arguments).Assembly, "ArcObjectsCodeGen.Resources", "Usage.txt");
+			Logger.Log(usageText.TrimEnd());
 		}
 
 		/// <summary>
