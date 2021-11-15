@@ -1,0 +1,175 @@
+# editorconfig.org
+
+root = true
+
+# Default settings:
+# A newline ending every file
+# Use 2 spaces as indentation
+[*]
+end_of_line                                                         = crlf
+trim_trailing_whitespace                                            = true
+insert_final_newline                                                = true
+
+[*.{config,appconfig,json,xml,csproj}]
+indent_style                                                        = space
+indent_size                                                         = 2
+
+[*.cs]
+indent_style                                                        = tab
+tab_width                                                           = 4
+
+# Organize Usings Import directives with System.* appearing first
+dotnet_sort_system_directives_first                                 = true
+
+# Avoid "this." and "Me." if not necessary
+dotnet_style_qualification_for_field                                = false : suggestion
+dotnet_style_qualification_for_property                             = false : suggestion
+dotnet_style_qualification_for_method                               = false : suggestion
+dotnet_style_qualification_for_event                                = false : suggestion
+
+# Use language keywords instead of framework type names for type references
+dotnet_style_predefined_type_for_locals_parameters_members          = true : suggestion
+dotnet_style_predefined_type_for_member_access                      = true : suggestion
+
+# Modifier preferences
+#dotnet_style_require_accessibility_modifiers                        = for_non_interface_members : suggestion
+
+# Suggest more modern language features when available
+dotnet_style_object_initializer                                     = true : suggestion
+dotnet_style_collection_initializer                                 = true : suggestion
+dotnet_style_explicit_tuple_names                                   = true : suggestion
+dotnet_style_coalesce_expression                                    = true : suggestion
+dotnet_style_null_propagation                                       = true : suggestion
+dotnet_style_prefer_inferred_tuple_names                            = true : suggestion
+dotnet_style_prefer_inferred_anonymous_type_member_names            = true : suggestion
+
+# Naming Rules --------------------------------------------------------------------------------------------------------------
+
+# constant fields should use PascalCase
+dotnet_naming_rule.constant_fields_should_be_pascal_case.severity   = warning
+dotnet_naming_rule.constant_fields_should_be_pascal_case.symbols    = const_fields
+dotnet_naming_rule.constant_fields_should_be_pascal_case.style      = const_field_style
+
+dotnet_naming_symbols.const_fields.applicable_kinds                 = field
+dotnet_naming_symbols.const_fields.applicable_accessibilities       = *
+dotnet_naming_symbols.const_fields.required_modifiers               = const
+
+dotnet_naming_style.const_field_style.capitalization                = pascal_case
+
+# static fields should have s_ prefix
+dotnet_naming_rule.static_fields_should_have_prefix.severity        = warning
+dotnet_naming_rule.static_fields_should_have_prefix.symbols         = static_fields
+dotnet_naming_rule.static_fields_should_have_prefix.style           = static_field_style
+
+dotnet_naming_symbols.static_fields.required_modifiers              = static
+dotnet_naming_symbols.static_fields.applicable_kinds                = field
+dotnet_naming_symbols.static_fields.applicable_accessibilities      = *
+
+dotnet_naming_style.static_field_style.required_prefix              = s_
+dotnet_naming_style.static_field_style.capitalization               = pascal_case
+
+# non-static fields should have m_ prefix 
+dotnet_naming_rule.fields_should_have_prefix.severity               = warning
+dotnet_naming_rule.fields_should_have_prefix.symbols                = all_fields
+dotnet_naming_rule.fields_should_have_prefix.style                  = field_style
+
+dotnet_naming_symbols.all_fields.applicable_kinds                   = field
+dotnet_naming_symbols.all_fields.applicable_accessibilities         = public, private, internal
+
+dotnet_naming_style.field_style.required_prefix                     = m_
+dotnet_naming_style.field_style.capitalization                      = pascal_case
+
+# interfaces should have I prefix
+dotnet_naming_rule.interfaces_should_have_prefix.severity           = warning
+dotnet_naming_rule.interfaces_should_have_prefix.symbols            = all_interfaces
+dotnet_naming_rule.interfaces_should_have_prefix.style              = interface_style
+
+dotnet_naming_symbols.all_interfaces.applicable_kinds               = interface
+
+dotnet_naming_style.interface_style.required_prefix                 = I
+dotnet_naming_style.interface_style.capitalization                  = pascal_case 
+
+# Async methods should have "Async" suffix
+dotnet_naming_rule.async_methods_end_in_async.severity              = warning
+dotnet_naming_rule.async_methods_end_in_async.symbols               = async_methods
+dotnet_naming_rule.async_methods_end_in_async.style                 = end_in_async
+
+dotnet_naming_symbols.async_methods.applicable_kinds                = method
+dotnet_naming_symbols.async_methods.applicable_accessibilities      = *
+dotnet_naming_symbols.async_methods.required_modifiers              = async
+
+dotnet_naming_style.end_in_async.required_suffix                    = Async
+dotnet_naming_style.end_in_async.capitalization                     = pascal_case
+
+# pascal case should be used
+dotnet_naming_rule.use_pascal_case.severity                         = warning
+dotnet_naming_rule.use_pascal_case.symbols                          = standard_symbols
+dotnet_naming_rule.use_pascal_case.style                            = pascal_case_style
+
+dotnet_naming_symbols.standard_symbols.applicable_kinds             = class,struct,enum,property,method
+
+dotnet_naming_style.pascal_case_style.capitalization                = pascal_case
+
+# C# Code Style Settings --------------------------------------------------------------------------------------------------------------
+
+# Types: use keywords instead of BCL types, and permit var only when the type is clear
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent =true:suggestion
+csharp_style_var_elsewhere =true:silent
+dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
+dotnet_style_predefined_type_for_member_access = true:suggestion
+
+# Modifier preferences
+csharp_preferred_modifier_order                                     = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:suggestion
+
+# Expression-bodied members
+csharp_style_expression_bodied_methods                              = true : suggestion
+csharp_style_expression_bodied_constructors                         = false : suggestion
+csharp_style_expression_bodied_operators                            = true : suggestion
+csharp_style_expression_bodied_properties                           = true : suggestion
+csharp_style_expression_bodied_indexers                             = true : suggestion
+csharp_style_expression_bodied_accessors                            = true : suggestion
+
+# Pattern matching
+csharp_style_pattern_matching_over_is_with_cast_check               = true : suggestion
+csharp_style_pattern_matching_over_as_with_null_check               = true : suggestion
+
+# Inlined variable declarations
+csharp_style_inlined_variable_declaration                           = true : suggestion
+
+# Expression-level preferences
+csharp_prefer_simple_default_expression                             = true : suggestion
+csharp_style_deconstructed_variable_declaration                     = true : suggestion
+csharp_style_pattern_local_over_anonymous_function                  = true : suggestion
+
+# "Null" checking preferences
+csharp_style_throw_expression                                       = true : suggestion
+csharp_style_conditional_delegate_call                              = true : suggestion
+
+# Code block preferences
+csharp_prefer_braces                                                = false : suggestion
+
+# Newline settings
+csharp_new_line_before_open_brace                                   = all
+csharp_new_line_before_else                                         = true
+csharp_new_line_before_catch                                        = true
+csharp_new_line_before_finally                                      = true
+csharp_new_line_before_members_in_object_initializers               = true
+csharp_new_line_before_members_in_anonymous_types                   = true
+csharp_new_line_between_query_expression_clauses                    = true
+
+# Indentation Options
+csharp_indent_case_contents                                         = true
+csharp_indent_switch_labels                                         = true
+csharp_indent_labels                                                = no_change
+
+# Spacing Options
+csharp_space_after_cast                                             = false
+csharp_space_after_keywords_in_control_flow_statements              = true
+csharp_space_between_method_declaration_parameter_list_parentheses  = false
+csharp_space_between_method_call_parameter_list_parentheses         = false
+csharp_space_between_parentheses                                    = false
+
+# Wrapping options
+csharp_preserve_single_line_statements                              = true
+csharp_preserve_single_line_blocks                                  = true
